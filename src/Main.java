@@ -12,7 +12,9 @@ public class Main{
             System.out.println("3. Search Student by ID");
             System.out.println("4. Update Student");
             System.out.println("5. Remove Student by ID");
-            System.out.println("6. Exit");
+            System.out.println("6. Display Student Count");
+            System.out.println("7. Sort Students by GPA ");
+            System.out.println("8. Exit ");
             System.out.print("Choose an option: ");
 
             int choice = scanner.nextInt();
@@ -32,6 +34,11 @@ public class Main{
 
                     System.out.print("Enter student GPA: ");
                     double gpa = scanner.nextDouble();
+
+                    if(gpa < 0 || gpa > 4.0){
+                        System.out.println("Invalid GPA. Must be between 0.0 and 4.0");
+                        break;
+                    }
 
                     Student student = new Student(id, name, major, gpa);
                     manager.addStudent(student);
@@ -59,6 +66,11 @@ public class Main{
                     System.out.print("Enter new student GPA: ");
                     double updatedGpa = scanner.nextDouble();
 
+                    if(updatedGpa < 0 || updatedGpa > 4.0){
+                        System.out.println("Invalid GPA. Must be between 0.0 and 4.0");
+                        break;
+                    }
+
                     manager.updateStudentById(
                             updateId,
                             updatedName,
@@ -73,8 +85,15 @@ public class Main{
 
                     manager.removeStudentById(removeId);
                     break;
-
                 case 6:
+                    manager.displayStudentCount();
+                    break;
+
+                case 7:
+                    manager.sortStudentsByGpa();
+                    break;
+
+                case 8:
                     System.out.println("Exiting program... ");
                     scanner.close();
                     return;

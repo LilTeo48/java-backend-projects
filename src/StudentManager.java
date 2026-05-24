@@ -1,11 +1,16 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class StudentManager {
     private ArrayList<Student> students = new ArrayList<>();
 
     public void addStudent(Student student){
-        students.add(student);
-        System.out.println("Student added successfully");
+       if(findStudentById(student.getId()) != null){
+           System.out.println("Student ID already exists.");
+           return;
+       }
+       students.add(student);
+       System.out.println("Student added successfully.");
     }
 
     public void viewStudents(){
@@ -51,6 +56,25 @@ public class StudentManager {
        students.remove(student);
        System.out.println("Student removed successfully.");
     }
+
+    public void displayStudentCount(){
+        System.out.println("Total students: " + students.size());
+    }
+    public void sortStudentsByGpa(){
+        if(students.isEmpty()){
+            System.out.println("No student found.");
+            return;
+        }
+        students.sort(
+                Comparator.comparingDouble(Student::getGpa).reversed()
+        );
+
+        System.out.println("Students sorted by GPA (Highest to Lowest).");
+
+        viewStudents();
+    }
+
+
     private Student findStudentById(int id){
     for(Student student : students){
         if(student.getId() == id){
