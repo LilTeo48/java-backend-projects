@@ -62,7 +62,7 @@ public class StudentManager {
     }
     public void sortStudentsByGpa(){
         if(students.isEmpty()){
-            System.out.println("No student found.");
+            System.out.println("No students found.");
             return;
         }
         students.sort(
@@ -73,7 +73,19 @@ public class StudentManager {
 
         viewStudents();
     }
+    public void searchStudentByName(String name){
+        boolean found = false;
 
+        for (Student student : students){
+            if(student.getName().toLowerCase().contains(name.toLowerCase())){
+                System.out.println(student);
+                found = true;
+            }
+        }
+        if(!found){
+            System.out.println("Student not found.");
+        }
+    }
 
     private Student findStudentById(int id){
     for(Student student : students){

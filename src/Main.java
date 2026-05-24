@@ -10,11 +10,12 @@ public class Main{
             System.out.println("1. Add Student");
             System.out.println("2. View Students");
             System.out.println("3. Search Student by ID");
-            System.out.println("4. Update Student");
-            System.out.println("5. Remove Student by ID");
-            System.out.println("6. Display Student Count");
-            System.out.println("7. Sort Students by GPA ");
-            System.out.println("8. Exit ");
+            System.out.println("4. Search Student by Name");
+            System.out.println("5. Update Student");
+            System.out.println("6. Remove Student by ID");
+            System.out.println("7. Display Student Count");
+            System.out.println("8. Sort Students by GPA ");
+            System.out.println("9. Exit ");
             System.out.print("Choose an option: ");
 
             int choice = scanner.nextInt();
@@ -53,6 +54,13 @@ public class Main{
                     manager.searchStudentById(searchId);
                     break;
                 case 4:
+                    System.out.print("Enter student name to search: ");
+                    String searchName = scanner.nextLine();
+
+                    manager.searchStudentByName(searchName);
+                    break;
+
+                case 5:
                     System.out.print("Enter student ID to update: ");
                     int updateId = scanner.nextInt();
                     scanner.nextLine();
@@ -79,21 +87,21 @@ public class Main{
                     );
                     break;
 
-                case 5:
+                case 6:
                     System.out.print("Enter student ID to remove: ");
                     int removeId = scanner.nextInt();
 
                     manager.removeStudentById(removeId);
                     break;
-                case 6:
+                case 7:
                     manager.displayStudentCount();
                     break;
 
-                case 7:
+                case 8:
                     manager.sortStudentsByGpa();
                     break;
 
-                case 8:
+                case 9:
                     System.out.println("Exiting program... ");
                     scanner.close();
                     return;
