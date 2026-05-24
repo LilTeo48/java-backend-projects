@@ -1,6 +1,15 @@
 # Compiled class file
 *.class
 
+# IntelliJ IDEA
+.idea/
+
+# Build output
+out/
+
+# IntelliJ module files
+*.iml
+
 # Log file
 *.log
 
