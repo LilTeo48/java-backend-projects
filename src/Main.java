@@ -10,8 +10,9 @@ public class Main{
             System.out.println("1. Add Student");
             System.out.println("2. View Students");
             System.out.println("3. Search Student by ID");
-            System.out.println("4. Remove Student by ID");
-            System.out.println("5. Exit");
+            System.out.println("4. Update Student");
+            System.out.println("5. Remove Student by ID");
+            System.out.println("6. Exit");
             System.out.print("Choose an option: ");
 
             int choice = scanner.nextInt();
@@ -45,11 +46,35 @@ public class Main{
                     manager.searchStudentById(searchId);
                     break;
                 case 4:
+                    System.out.print("Enter student ID to update: ");
+                    int updateId = scanner.nextInt();
+                    scanner.nextLine();
+
+                    System.out.print("Enter new student name: ");
+                    String updatedName = scanner.nextLine();
+
+                    System.out.print("Enter new student major: ");
+                    String updatedMajor = scanner.nextLine();
+
+                    System.out.print("Enter new student GPA: ");
+                    double updatedGpa = scanner.nextDouble();
+
+                    manager.updateStudentById(
+                            updateId,
+                            updatedName,
+                            updatedMajor,
+                            updatedGpa
+                    );
+                    break;
+
+                case 5:
                     System.out.print("Enter student ID to remove: ");
                     int removeId = scanner.nextInt();
-                   manager.removeStudentById(removeId);
+
+                    manager.removeStudentById(removeId);
                     break;
-                case 5:
+
+                case 6:
                     System.out.println("Exiting program... ");
                     scanner.close();
                     return;

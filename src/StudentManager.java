@@ -18,23 +18,46 @@ public class StudentManager {
         }
     }
     public void searchStudentById(int id){
-        for (Student student : students){
-            if (student.getId() == id){
-                System.out.println("Student found.");
-                System.out.println(student);
-                return;
-            }
+        Student student = findStudentById(id);
+
+        if(student == null){
+            System.out.println("Student not found.");
+            return;
         }
-        System.out.println("Student not found.");
+        System.out.println("Student found.");
+        System.out.println(student);
+    }
+
+    public void updateStudentById(int id, String name, String major, double gpa){
+        Student student = findStudentById(id);
+
+        if(student == null){
+            System.out.println("Student not found.");
+            return;
+        }
+        student.setName(name);
+        student.setMajor(major);
+        student.setGpa(gpa);
+
+        System.out.println("Student updated successfully.");
     }
     public void removeStudentById(int id){
-        for (Student student : students){
-            if(student.getId() == id){
-                students.remove(student);
-                System.out.println("Student removed successfully.");
-                return;
-            }
+       Student student = findStudentById(id);
+
+       if(student == null){
+           System.out.println("Student not found.");
+           return;
+       }
+       students.remove(student);
+       System.out.println("Student removed successfully.");
+    }
+    private Student findStudentById(int id){
+    for(Student student : students){
+        if(student.getId() == id){
+            return student;
         }
-        System.out.println("Student not found");
+    }
+
+    return null;
     }
 }
