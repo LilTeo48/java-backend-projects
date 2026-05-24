@@ -37,11 +37,14 @@ public class Student {
     }
 
     @Override
-    public String toString(){
-        return "ID: " + id +
-                " | Name: " + name +
-                " | Major: " + major +
-                " | GPA: " + gpa;
+    public String toString() {
+        return String.format(
+                "ID: %d | Name: %s | Major: %s | GPA: %.2f",
+                id,
+                name,
+                major,
+                gpa
+        );
     }
 
 }
